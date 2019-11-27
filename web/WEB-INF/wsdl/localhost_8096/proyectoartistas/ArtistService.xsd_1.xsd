@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3.payara-p3 (2.4.3.payara-maintenance-a5c1c68; 2019-06-17T14:04:38+0200) JAXWS-RI/2.3.2.payara-p2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://sevice.ustatunja.com/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://sevice.ustatunja.com/">
+
+<xs:element name="actualizar" type="tns:actualizar"/>
+
+<xs:element name="actualizarResponse" type="tns:actualizarResponse"/>
+
+<xs:element name="add" type="tns:add"/>
+
+<xs:element name="addResponse" type="tns:addResponse"/>
+
+<xs:element name="delete" type="tns:delete"/>
+
+<xs:element name="deleteResponse" type="tns:deleteResponse"/>
+
+<xs:element name="listArtist" type="tns:listArtist"/>
+
+<xs:element name="listArtistResponse" type="tns:listArtistResponse"/>
+
+<xs:complexType name="delete">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="deleteResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="listArtist">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="listArtistResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:artist" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="artist">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean"/>
+<xs:element name="artOrderCollection" type="tns:artOrder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="display_name" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="idartist" type="xs:int" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+<xs:element name="paypal_email" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="artOrder">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+<xs:element name="idartist" type="tns:artist" minOccurs="0"/>
+<xs:element name="idartorder" type="xs:int" minOccurs="0"/>
+<xs:element name="idclient" type="tns:client" minOccurs="0"/>
+<xs:element name="idproduct" type="tns:product" minOccurs="0"/>
+<xs:element name="invoiceCollection" type="tns:invoice" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="trackingTicketCollection" type="tns:trackingTicket" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="client">
+<xs:sequence>
+<xs:element name="active" type="xs:boolean" minOccurs="0"/>
+<xs:element name="artOrderCollection" type="tns:artOrder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="first_name" type="xs:string" minOccurs="0"/>
+<xs:element name="idclient" type="xs:int" minOccurs="0"/>
+<xs:element name="last_name" type="xs:string" minOccurs="0"/>
+<xs:element name="password" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="product">
+<xs:sequence>
+<xs:element name="artOrderCollection" type="tns:artOrder" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="description" type="xs:string" minOccurs="0"/>
+<xs:element name="idproduct" type="xs:int" minOccurs="0"/>
+<xs:element name="idproducttype" type="tns:productType" minOccurs="0"/>
+<xs:element name="title" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="productType">
+<xs:sequence>
+<xs:element name="idproduct" type="tns:product" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idproducttype" type="xs:int" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="invoice">
+<xs:sequence>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idartorder" type="tns:artOrder" minOccurs="0"/>
+<xs:element name="idcoupon" type="tns:coupon" minOccurs="0"/>
+<xs:element name="idinvoice" type="xs:int" minOccurs="0"/>
+<xs:element name="idpaymentstatus" type="tns:paymentStatus" minOccurs="0"/>
+<xs:element name="price" type="xs:float" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="coupon">
+<xs:sequence>
+<xs:element name="amount" type="xs:float" minOccurs="0"/>
+<xs:element name="coupon_number" type="xs:string" minOccurs="0"/>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idcoupon" type="xs:int" minOccurs="0"/>
+<xs:element name="idcoupons" type="tns:couponType" minOccurs="0"/>
+<xs:element name="invoiceCollection" type="tns:invoice" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="couponType">
+<xs:sequence>
+<xs:element name="couponCollection" type="tns:coupon" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="idcoupontype" type="xs:int" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="paymentStatus">
+<xs:sequence>
+<xs:element name="idpaymentstatus" type="xs:int" minOccurs="0"/>
+<xs:element name="invoiceCollection" type="tns:invoice" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="trackingTicket">
+<xs:sequence>
+<xs:element name="date" type="xs:dateTime" minOccurs="0"/>
+<xs:element name="idartorder" type="tns:artOrder" minOccurs="0"/>
+<xs:element name="idtrackingstatus" type="tns:trackingStatus" minOccurs="0"/>
+<xs:element name="idtrackingticket" type="xs:int" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="trackingStatus">
+<xs:sequence>
+<xs:element name="idtrackingstatus" type="xs:int" minOccurs="0"/>
+<xs:element name="name" type="xs:string" minOccurs="0"/>
+<xs:element name="trackingTicketCollection" type="tns:trackingTicket" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizar">
+<xs:sequence>
+<xs:element name="id" type="xs:int" minOccurs="0"/>
+<xs:element name="dName" type="xs:string" minOccurs="0"/>
+<xs:element name="corr" type="xs:string" minOccurs="0"/>
+<xs:element name="corP" type="xs:string" minOccurs="0"/>
+<xs:element name="pass" type="xs:string" minOccurs="0"/>
+<xs:element name="est" type="xs:boolean"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="actualizarResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="add">
+<xs:sequence>
+<xs:element name="dName" type="xs:string" minOccurs="0"/>
+<xs:element name="email" type="xs:string" minOccurs="0"/>
+<xs:element name="pEmail" type="xs:string" minOccurs="0"/>
+<xs:element name="cont" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="addResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>

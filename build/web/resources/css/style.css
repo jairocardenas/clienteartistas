@@ -1,0 +1,22 @@
+.ui-widget {
+	font-size: 13px !important;
+}
+
+.ui-layout-north {
+	z-index: 20 !important;
+	overflow: visible !important;
+	background: #0080ff;
+}
+
+.ui-layout-north .ui-layout-unit-content {
+	overflow: visible !important;
+}
+
+.ui-widget-content {
+	border: none;
+}
+
+.roleName {
+	width: 200px;
+	height: 20px;
+}

@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+      <ui:composition template="/template.xhtml">
+
+        <ui:define name="body">
+
+            <h:form>
+                <p:panel>
+                    <p:growl id="idMsg" life="5000" showDetail="true" />
+
+                    <p:panelGrid columns="2">
+                        <f:facet name="header">
+                            <p:outputLabel value="#{msg['art.createtitle']}" />
+                        </f:facet>
+
+                        <p:outputLabel value="#{msg['art.createname']}"
+                                       for="displayName" />
+                        <p:inputText id="displayName" required="true"
+                                     value="#{mbArtist.selected.displayName}" />
+
+                        <p:outputLabel value="#{msg['art.createemail']}"
+                                       for="email" />
+                        <p:inputText id="email" required="true"
+                                     value="#{mbArtist.selected.email}" />
+
+                        <p:outputLabel value="#{msg['art.createemailpay']}"
+                                       for="payEmail" />
+                        <p:inputText id="payEmail" required="true"
+                                     value="#{mbArtist.selected.displayName}" />
+
+
+                        <p:outputLabel value="#{msg['art.createpass']}"
+                                       for="con" />
+                        <p:password id="con" required="true"
+                                    value="#{mbArtist.selected.password}" />
+
+
+                        <f:facet name="footer">
+                            <p:commandButton id="btnGuardar"  action="#{mbArtist.updateArtist()}"
+                                             value="#{msg['art.save']}" ajax="false" icon="ui-icon-check" />
+                        </f:facet>
+                        
+                    </p:panelGrid>
+                </p:panel>
+            </h:form>
+
+
+        </ui:define>
+    </ui:composition>
+
+</html>
+

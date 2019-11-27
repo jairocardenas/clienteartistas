@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+
+        <ui:define name="body">
+
+            <div class="ui-g-12 ui-md-6 ui-lg-4" />
+            <div class="ui-g-12 ui-md-6 ui-lg-4">
+                <h:form>
+                    <p:panel>
+                        <p:growl id="idMsg" life="5000" showDetail="true" />
+
+                        <p:panelGrid columns="2">
+                            <f:facet name="header">
+                                <p:outputLabel value="#{msg['pt.createtitile']}" />
+                            </f:facet>
+
+                            <p:outputLabel value="#{msg['pt.createname']}" for="name" />
+                            <p:inputText id="name" required="true"
+                                         value="#{mbProductType.selected.name}" />
+
+
+                            <f:facet name="footer">
+                                <p:commandButton id="btnGuardar"
+                                                 action="#{mbProductType.addProductType()}"
+                                                 value="#{msg['pt.createsave']}" ajax="false" icon="ui-icon-check" />
+                            </f:facet>
+
+                        </p:panelGrid>
+                    </p:panel>
+                </h:form>
+            </div>
+            <div class="ui-g-12 ui-md-6 ui-lg-4" />
+
+
+        </ui:define>
+    </ui:composition>
+
+
+
+</html>
+
